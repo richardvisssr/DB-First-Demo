@@ -1,6 +1,4 @@
-# DB-First-Demo
-
-# InsideAirBnB Database met Entity Framework Core
+# InsideAirBnB Database met Entity Framework Core DB First
 
 ## Database opzetten
 
@@ -38,14 +36,18 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=InsideAirBNB-Paris-2024;
 
 Nu zien we onder de map Models nieuwe klassen staan, de InsideAirBnbParis2024Context klasse die erft van DbContext. Deze heeft een instantie van DbContextOptions die informatie over de configuratie bevat.
 
-## Maak een nieuwe web app aan
+## Maak een nieuwe Blazor Web Applicatie
 
-// maak stappen voor nieuwe web app aan te maken zoals blazor
+1. Ga naar het menu "Bestand" en klik op "Nieuw" en vervolgens op "Project". Het dialoogvenster "Nieuw project" wordt geopend.
+2. Aan de linkerkant van het dialoogvenster selecteer je ".NET" -> "Web".
+3. Aan de rechterkant van het dialoogvenster selecteer je "Blazor WebAssembly App".
+4. Geef je project de naam "EfCoreDBFirst_Blazor" en selecteer de locatie waar je het wilt opslaan.
+5. Klik op "Create". Visual Studio maakt nu een nieuw Blazor WebAssembly-project voor je aan.
 
 # configurate DBContext
 
 
-Voeg in de server die je hebt aangemaakt via nuget packet NuGet Package Manager -> Package Manager Console
+Voeg in de server "EfCoreDBFirst_Blazor" die je hebt aangemaakt via nuget packet NuGet Package Manager -> Package Manager Console
 
 ```bash
 Install-package Microsoft.EntityFrameworkCore.SqlServer
@@ -84,7 +86,7 @@ Voeg in je server een map toe met de naam controller en voeg een empty API of MV
 
 # Update de scaffold
 
-Voor update gebruik de flaf -force om te update. Onthoudt dat alles overschreden wordt dus verwijder opnieuw in de context de Onconfiguration met de database connectionstring
+Voor update gebruik de flag -force om te update. Onthoudt dat alles overschreden wordt dus verwijder opnieuw in de context de Onconfiguration met de database connectionstring
 
 dotnet ef dbcontext scaffold "Server=localhost;Database=InsideAirBNB-Paris-2024;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=False;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer -o Models -force
 
