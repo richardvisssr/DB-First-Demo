@@ -72,19 +72,19 @@ En in de appsettings in de server de volgende regel
 
 Voeg in je server een map toe met de naam controller en voeg een empty API of MVC controller toe en voeg in de klass de volgende code toe
 
-        private InsideAirBnbParis2024Context _context;
-
-        public ValuesController(InsideAirBnbParis2024Context context)
-        {
-            _context = context;
-        }
-        [HttpGet]
-        public async Task<IActionResult>GetAllListings()
-        {
-            var listings = await _context.Listings.ToListAsync();
-            return Ok(listings);
-
-        }
+      private InsideAirBnbParis2024Context _context;
+    
+      public ValuesController(InsideAirBnbParis2024Context context)
+      {
+          _context = context;
+      }
+      [HttpGet]
+      public async Task<ActionResult<List<Listing>>> GetAllListings()
+      {
+          var listings = await _context.Listings.ToListAsync();
+          return Ok(listings);
+    
+      }
 
 
 # Update de scaffold
