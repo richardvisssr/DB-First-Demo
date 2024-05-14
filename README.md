@@ -89,9 +89,9 @@ Voeg in je server een map toe met de naam controller en voeg een empty API of MV
 
 # Update de scaffold
 
-Voor update gebruik de flag -force om te update. Onthoudt dat alles overschreden wordt dus verwijder opnieuw in de context de Onconfiguration met de database connectionstring
+Voor update gebruik de flag --force om te update. Onthoudt dat alles overschreden wordt dus verwijder opnieuw in de context de Onconfiguration met de database connectionstring
 
-dotnet ef dbcontext scaffold "Server=localhost;Database=InsideAirBNB-Paris-2024;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=False;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer -o Models -force
+dotnet ef dbcontext scaffold "Server=localhost;Database=InsideAirBNB-Paris-2024;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=False;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer -o Models --force
 
 # Extra: maake gebruik van de service met LINQ
 
