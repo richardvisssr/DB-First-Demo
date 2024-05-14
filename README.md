@@ -11,7 +11,7 @@
 2. Ga naar het menu Bestand, wijs Nieuw aan en klik vervolgens op Project. Het dialoogvenster Nieuw project wordt geopend.
 3. Aan de linkerkant van het dialoogvenster selecteer je Geïnstalleerd -> Visual C# -> .NET Core.
 4. Aan de rechterkant van het dialoogvenster selecteer je Klassenbibliotheek (.NET Core).
-5. Selecteer het pad om het project op te slaan en voer de projectnaam in als EfCoreDBFirst.
+5. Selecteer het pad om het project op te slaan en voer de projectnaam in als "EfCoreDBFirst".
 6. Klik op OK. Er wordt een nieuw project aangemaakt.
 
 ## Installeer NuGet-pakketten
@@ -67,6 +67,8 @@ En in de appsettings in de server de volgende regel
       "DefaultConnection": "Server=localhost;Database=InsideAirBNB-Paris-2024;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=False;TrustServerCertificate=true;",
     }
 
+Voeg een referentie toe in je web api naar EfCoreDBFirst door op rechtermuis te klikken op dependencies.
+
 # Maak een controller om te testen
 
 Voeg in je server een map toe met de naam controller en voeg een empty API controller toe en voeg in de klass de volgende code toe
@@ -97,27 +99,19 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=InsideAirBNB-Paris-2024;
 
 voeg een nieuwe map toe in EfCoreDBFirst met de naam Services en voeg een Interface toe genaamd IListingService
 
-namespace Demo_DB_first.Controller
-{
-    public interface IListingService
+
     {
-        Task<List<Listing>> GetAllListingsAsync();
+        public interface IListingService
+        {
+            Task<List<Listing>> GetAllListingsAsync();
+        }
     }
-}
 
 Voeg daarna een nieuwe klas toe genaamd ListingsService:
 
-using ClassLibrary.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ClassLibrary.Services
-{
-    public class ListingService
+
+    public class ListingService : IListingService
     {
         private readonly InsideAirBnbParis2024Context _context;
         public ListingService(InsideAirBnbParis2024Context context)
@@ -139,6 +133,12 @@ namespace ClassLibrary.Services
             return listings;
         }
     }
-}
 
-Laat dan de controller gebruik maken van deze service
+Voeg vervolgend de Service toe aan de program.cs
+
+    
+    builder.Services.AddScoped<IListingService, ListingService>();
+    
+
+
+
