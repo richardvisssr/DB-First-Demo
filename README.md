@@ -36,18 +36,17 @@ dotnet ef dbcontext scaffold "Server=localhost;Database=InsideAirBNB-Paris-2024;
 
 Nu zien we onder de map Models nieuwe klassen staan, de InsideAirBnbParis2024Context klasse die erft van DbContext. Deze heeft een instantie van DbContextOptions die informatie over de configuratie bevat.
 
-## Maak een nieuwe Blazor Web Applicatie
+## Maak een nieuwe Web API aan
 
-1. Ga naar het menu "Bestand" en klik op "Nieuw" en vervolgens op "Project". Het dialoogvenster "Nieuw project" wordt geopend.
-2. Aan de linkerkant van het dialoogvenster selecteer je ".NET" -> "Web".
-3. Aan de rechterkant van het dialoogvenster selecteer je "Blazor WebAssembly App".
-4. Geef je project de naam "EfCoreDBFirst_Blazor" en selecteer de locatie waar je het wilt opslaan.
-5. Klik op "Create". Visual Studio maakt nu een nieuw Blazor WebAssembly-project voor je aan.
+1. Ga naar solution explorer en selecteer "Add" op de solution en klik op "New Project". Het dialoogvenster "Nieuw project" wordt geopend.
+2. Aan de rechterkant van het dialoogvenster selecteer je "ASP.NET Core Web Api".
+3. Geef je project de naam "EfCoreDBFirst_Api" en selecteer de locatie waar je het wilt opslaan.
+4. Klik op "Create".
 
 # configurate DBContext
 
 
-Voeg in de server "EfCoreDBFirst_Blazor" die je hebt aangemaakt via nuget packet NuGet Package Manager -> Package Manager Console
+Voeg in de server "EfCoreDBFirst_Api" die je hebt aangemaakt via nuget packet NuGet Package Manager -> Package Manager Console
 
 ```bash
 Install-package Microsoft.EntityFrameworkCore.SqlServer
@@ -70,7 +69,7 @@ En in de appsettings in de server de volgende regel
 
 # Maak een controller om te testen
 
-Voeg in je server een map toe met de naam controller en voeg een empty API of MVC controller toe en voeg in de klass de volgende code toe
+Voeg in je server een map toe met de naam controller en voeg een empty API controller toe en voeg in de klass de volgende code toe
 
       private InsideAirBnbParis2024Context _context;
     
