@@ -56,7 +56,10 @@ Install-package Microsoft.EntityFrameworkCore.SqlServer
 Voeg daarna in de program.cs de volgende regel toe 
 
 ```bash
-builder.Services.AddDbContext<InsideAirBnbParis2024Context>();
+
+builder.Services.AddDbContext<InsideAirBnbParis2024Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 ```
 
 En in de appsettings in de server de volgende regel
